@@ -1,0 +1,20 @@
+{
+  "name": "finance",
+  "main": "./lib/finance",
+  "version": "0.0.1",
+  "description": "Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).",
+  "keywords": [],
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
+  },
+  "repository": "https://github.com/7kfpun/atom-finance",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "dependencies": {}
+}
