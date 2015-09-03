@@ -2,7 +2,7 @@
 
 Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).
 
-![ScreenShot](screenshot.gif)
+![ScreenShot](https://raw.github.com/7kfpun/atom-finance/master/screenshot.gif)
 
 
 ## Installing
@@ -42,7 +42,7 @@ To access the Finance Settings:
 1. Go to `Atom -> Preferences...` or `cmd-,`
 2. In the `Filter Packages` type `finance`
 
-![Settings](settings.png)
+![Settings](https://raw.github.com/7kfpun/atom-finance/master/settings.png)
 
 Finance has 5 settings that can be edited:
 
@@ -145,7 +145,6 @@ The following commands are available and are keyboard shortcuts.
     YearLow
     YearRange
     symbol
-
 
 ## License
 
