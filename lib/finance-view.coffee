@@ -23,7 +23,7 @@ class FinanceView extends HTMLDivElement
             atom.notifications.addWarning exp + ' is a supported quote property provided by Yahoo Finance.',
               dismissable: false
               detail: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
-      ), 1000
+      ), 2000
       @build()
     @observeSeparator = atom.config.observe 'finance.separator', (newValue, previous) =>
       @build()
@@ -54,8 +54,12 @@ class FinanceView extends HTMLDivElement
 
 
   initElements: ->
-    @classList.add('finance-box', 'inline-block')
+    @classList.add('finance-status', 'inline-block')
     @setAttribute 'id', 'finance-status'
+    @icon = document.createElement 'span'
+    @icon.classList.add('icon-graph', 'inline-block')
+    @appendChild(@icon)
+
     # @finance = document.createElement 'span'
     scroll = atom.config.get('finance.scroll')
     if scroll != 'fixed'

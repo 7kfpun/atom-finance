@@ -44,12 +44,12 @@ To access the Finance Settings:
 
 ![Settings](https://raw.github.com/7kfpun/atom-finance/master/settings.png)
 
-Finance has 5 settings that can be edited:
+Finance has 6 settings that can be edited:
 
-1. Display | default: `right`
+1. Display | default: `right` (right, left)
 2. Format | default: `{symbol}: {LastTradePriceOnly} ({Change})`
 3. Refresh | default: `15` (In seconds, if zero seconds only refreshes when open/close windows or trigger refresh)
-4. Scroll | default: `left`
+4. Scroll | default: `left` (left, right, fixed)
 5. Separator | default: ` | `
 6. Watchlist | default: `GOOG,^HSI,0005.HK`
 

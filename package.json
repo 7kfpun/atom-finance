@@ -3,7 +3,13 @@
   "main": "./lib/finance",
   "version": "0.3.0",
   "description": "Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).",
-  "keywords": [],
+  "keywords": [
+    "finance",
+    "financial",
+    "yahoo finance",
+    "stock",
+    "statusbar"
+  ],
   "consumedServices": {
     "status-bar": {
       "versions": {
