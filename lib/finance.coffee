@@ -19,7 +19,7 @@ module.exports =
     scroll:
       type: 'string'
       default: 'left'
-      enum: ['left', 'right']
+      enum: ['left', 'right', 'fixed']
     refresh:
       description: 'In seconds, if zero seconds only refreshes when open/close windows or trigger refresh'
       type: 'integer'

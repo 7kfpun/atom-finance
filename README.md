@@ -8,7 +8,7 @@ Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).
 ## Installing
 
 1. Go to `Atom -> Preferences...`
-2. Then select the `Packages` tab
+2. Then select the `Install` tab
 3. Enter `finance` in the search box
 
 #### Using apm
@@ -59,6 +59,13 @@ The following commands are available and are keyboard shortcuts.
 
 * `finance:toggle` - Toggle - `ctrl-alt-f` `ctrl-alt-f`
 * `finance:refresh` - Refresh - `ctrl-alt-r` `ctrl-alt-r`
+
+
+## Financial data from Yahoo Finance
+
+This plugin supports all exchanges and markets that Yahoo Finance covers.
+
+Quotes are real-time for NASDAQ, NYSE, and NYSE Mkt when available from Nasdaq Last Sale and if not available will appear delayed from the primary listing source. See also delay times for other exchanges [here](https://help.yahoo.com/kb/finance/SLN2310.html).
 
 #### QuoteProperty
 

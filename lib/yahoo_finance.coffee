@@ -2,7 +2,8 @@
 https = require('https')
 
 yahooFinance = (codes, cb) ->
-  codes.replace ',', '%27,%27'
+  codes = codes.replace /[\s@#$%&*()\\]/g, ''
+  codes = codes.replace ',', '%27,%27'
 
   get = (r) ->
     bd = ''

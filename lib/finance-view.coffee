@@ -31,11 +31,27 @@ class FinanceView extends HTMLDivElement
       @build()
     @observeRefresh = atom.config.observe 'finance.refresh', (newValue, previous) =>
       @build()
+
     @initElements()
+
     @observeScroll = atom.config.observe 'finance.scroll', (newValue, previous) =>
-      if newValue != 'fixed'
+      if newValue == 'fixed'
+        if @finance.nodeName != 'SPAN'
+          @removeChild(@finance)
+          @finance = document.createElement 'span'
+          @finance.appendChild @price
+          @appendChild(@finance)
+      else
+        if @finance.nodeName != 'MARQUEE'
+          @removeChild(@finance)
+          @finance = document.createElement 'marquee'
+          @finance.appendChild @price
+          @appendChild(@finance)
+
         @finance.setAttribute 'direction', newValue
+
       @build()
+
 
   initElements: ->
     @classList.add('finance-box', 'inline-block')
@@ -90,6 +106,9 @@ class FinanceView extends HTMLDivElement
     separator = atom.config.get('finance.separator')
 
     yahoo watchlist, (coin) =>
+      if not coin.query.results
+        return
+
       quotes = coin.query.results.quote
       results = []
       if not Array.isArray(quotes)
