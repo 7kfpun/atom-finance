@@ -127,7 +127,7 @@ class FinanceView extends HTMLDivElement
         format = format.replace /[{}]/g, ''
         results.push(format)
 
-      @price.textContent = results.join(separator)
+      @price.innerHTML = results.join(separator)
       @finance.appendChild @price
       @appendChild(@finance)
 
