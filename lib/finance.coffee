@@ -2,29 +2,35 @@ finance = null
 
 module.exports =
   config:
-    watchlist:
-      type: 'string'
-      default: 'GOOG,^HSI,0005.HK'
-    format:
-      description: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
-      type: 'string'
-      default: '<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})'
-    separator:
-      type: 'string'
-      default: ' | '
     display:
       type: 'string'
       default: 'right'
       enum: ['left', 'right']
+    format:
+      description: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance. HTML elements are supported.'
+      type: 'string'
+      default: '<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})'
+    refresh:
+      description: 'In seconds, if zero seconds only refreshes when open/close windows or trigger refresh'
+      type: 'integer'
+      default: 30
+      minimum: 10
     scroll:
       type: 'string'
       default: 'left'
       enum: ['left', 'right', 'fixed']
-    refresh:
-      description: 'In seconds, if zero seconds only refreshes when open/close windows or trigger refresh'
+    scrollDelay:
+      description: 'This specifies the number of milliseconds between each successive draw of the marquee text.'
       type: 'integer'
-      default: 15
-      minimum: 1
+      default: 85
+      minimum: 60
+      maximum: 1000
+    separator:
+      type: 'string'
+      default: ' | '
+    watchlist:
+      type: 'string'
+      default: 'GOOG,^HSI,0005.HK'
 
   activate: ->
     console.log 'finance', 'activate'

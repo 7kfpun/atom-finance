@@ -12,7 +12,9 @@ class FinanceView extends HTMLDivElement
     subscriptions.add atom.commands.add 'atom-workspace', 'finance:refresh': =>
       @build()
 
-    @observeWatchlist = atom.config.observe 'finance.watchlist', (newValue, previous) =>
+    @initElements()
+
+    @observeDisplay = atom.config.observe 'finance.display', (newValue, previous) =>
       @build()
     @observeFormat = atom.config.observe 'finance.format', (newValue, previous) =>
       setTimeout (->
@@ -25,33 +27,18 @@ class FinanceView extends HTMLDivElement
               detail: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
       ), 2000
       @build()
-    @observeSeparator = atom.config.observe 'finance.separator', (newValue, previous) =>
-      @build()
-    @observeDisplay = atom.config.observe 'finance.display', (newValue, previous) =>
-      @build()
     @observeRefresh = atom.config.observe 'finance.refresh', (newValue, previous) =>
       @build()
-
-    @initElements()
-
-    @observeScroll = atom.config.observe 'finance.scroll', (newValue, previous) =>
-      if newValue == 'fixed'
-        if @finance.nodeName != 'SPAN'
-          @removeChild(@finance)
-          @finance = document.createElement 'span'
-          @finance.appendChild @price
-          @appendChild(@finance)
-      else
-        if @finance.nodeName != 'MARQUEE'
-          @removeChild(@finance)
-          @finance = document.createElement 'marquee'
-          @finance.appendChild @price
-          @appendChild(@finance)
-
-        @finance.setAttribute 'direction', newValue
-
+    @observeSeparator = atom.config.observe 'finance.separator', (newValue, previous) =>
       @build()
-
+    @observeScroll = atom.config.observe 'finance.scroll', (newValue, previous) =>
+      @updateElements()
+      @build()
+    @observeScrollDelay = atom.config.observe 'finance.scrollDelay', (newValue, previous) =>
+      @updateElements()
+      @build()
+    @observeWatchlist = atom.config.observe 'finance.watchlist', (newValue, previous) =>
+      @build()
 
   initElements: ->
     @classList.add('finance-status', 'inline-block')
@@ -60,15 +47,35 @@ class FinanceView extends HTMLDivElement
     @icon.classList.add('icon-graph', 'inline-block')
     @appendChild(@icon)
 
-    # @finance = document.createElement 'span'
     scroll = atom.config.get('finance.scroll')
+    scrollDelay = atom.config.get('finance.scrollDelay')
     if scroll != 'fixed'
       @finance = document.createElement 'marquee'
       @finance.setAttribute 'direction', scroll
+      @finance.setAttribute 'scrollDelay', scrollDelay
     else
       @finance = document.createElement 'span'
+    @appendChild(@finance)
 
     @price = document.createElement 'span'
+
+  updateElements: ->
+    scroll = atom.config.get('finance.scroll')
+    scrollDelay = atom.config.get('finance.scrollDelay')
+    if scroll == 'fixed'
+      if @finance.nodeName != 'SPAN'
+        @removeChild(@finance)
+        @finance = document.createElement 'span'
+        @finance.appendChild @price
+        @appendChild(@finance)
+    else
+      @removeChild(@finance)
+      @finance = document.createElement 'marquee'
+      @finance.appendChild @price
+      @appendChild(@finance)
+
+      @finance.setAttribute 'direction', scroll
+      @finance.setAttribute 'scrollDelay', scrollDelay
 
   attach: ->
     @build()
@@ -129,7 +136,6 @@ class FinanceView extends HTMLDivElement
 
       @price.innerHTML = results.join(separator)
       @finance.appendChild @price
-      @appendChild(@finance)
 
       if atom.config.get('finance.display') == 'left'
         @tile = @statusBar.addLeftTile(priority: 100, item: this)
