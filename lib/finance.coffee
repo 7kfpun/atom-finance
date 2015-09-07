@@ -8,7 +8,7 @@ module.exports =
     format:
       description: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
       type: 'string'
-      default: '{symbol}: {LastTradePriceOnly} ({Change})'
+      default: '<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})'
     separator:
       type: 'string'
       default: ' | '
