@@ -110,7 +110,7 @@ class FinanceView extends HTMLDivElement
     separator = atom.config.get('finance.separator')
 
     yahoo watchlist, (coin) =>
-      if not coin.query.results
+      if not coin.query or not coin.query.results
         return
 
       quotes = coin.query.results.quote
