@@ -19,12 +19,14 @@ class FinanceView extends HTMLDivElement
     @observeFormat = atom.config.observe 'finance.format', (newValue, previous) =>
       setTimeout (->
         format = atom.config.get('finance.format')
-        for exp in format.match(/{[^}]*}/g)
-          exp = exp.replace /[{}]/g, ''
-          if exp not in properties
-            atom.notifications.addWarning exp + ' is a supported quote property provided by Yahoo Finance.',
-              dismissable: false
-              detail: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
+        exps = format.match(/{[^}]*}/g)
+        if exps
+          for exp in exps
+            exp = exp.replace /[{}]/g, ''
+            if exp not in properties
+              atom.notifications.addWarning exp + ' is a supported quote property provided by Yahoo Finance.',
+                dismissable: false
+                detail: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
       ), 2000
       @build()
     @observeRefresh = atom.config.observe 'finance.refresh', (newValue, previous) =>
@@ -127,10 +129,12 @@ class FinanceView extends HTMLDivElement
 
       for quote in quotes
         format = atom.config.get('finance.format')  # '{symbol}: {LastTradePriceOnly} ({Change})'
-        for exp in format.match(/{[^}]*}/g)
-          exp = exp.replace /[{}]/g, ''
-          format = format.replace exp, quote[exp]
-          console.log exp, quote[exp]
+        exps = format.match(/{[^}]*}/g)
+        if exps
+          for exp in exps
+            exp = exp.replace /[{}]/g, ''
+            format = format.replace exp, quote[exp]
+            console.log exp, quote[exp]
         format = format.replace /[{}]/g, ''
         results.push(format)
 

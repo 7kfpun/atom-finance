@@ -47,7 +47,7 @@ To access the Finance Settings:
 Finance has 6 settings that can be edited:
 
 1. Display | default: `right` (right, left)
-2. Format | default: `{symbol}: {LastTradePriceOnly} ({Change})`
+2. Format | default: `<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})`
 3. Refresh | default: `30` (In seconds, if zero seconds only refreshes when open/close windows or trigger refresh)
 4. Scroll | default: `left` (left, right, fixed)
 4. Scroll Delay | default: `85`
