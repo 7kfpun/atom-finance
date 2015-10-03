@@ -26,7 +26,7 @@ class FinanceView extends HTMLDivElement
             if exp not in properties
               atom.notifications.addWarning exp + ' is a supported quote property provided by Yahoo Finance.',
                 dismissable: false
-                detail: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance.'
+                detail: 'Please refer to the documentation on https://github.com/7kfpun/atom-finance.'
       ), 2000
       @build()
     @observeRefresh = atom.config.observe 'finance.refresh', (newValue, previous) =>
@@ -136,6 +136,8 @@ class FinanceView extends HTMLDivElement
             format = format.replace exp, quote[exp]
             console.log exp, quote[exp]
         format = format.replace /[{}]/g, ''
+        format = format.replace /(\(\+?(\d+(\.(\d+)?)?|\.\d+)\))/g, "<span style='color:green'>$1<\/span>"
+        format = format.replace /(\(-\d+?\.?\d+\))/g, "<span style='color:red'>$1<\/span>"
         results.push(format)
 
       @price.innerHTML = results.join(separator)
