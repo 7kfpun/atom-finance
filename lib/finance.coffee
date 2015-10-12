@@ -10,6 +10,15 @@ module.exports =
       description: 'Please refer to the documantation on https://github.com/7kfpun/atom-finance. HTML elements are supported.'
       type: 'string'
       default: '<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})'
+    isColorized:
+      description: 'Colorize the positive and negative values'
+      type: 'boolean'
+      default: true
+    positiveColor:
+      description: 'Colorize the positive values green or red'
+      type: 'string'
+      default: 'green'
+      enum: ['green', 'red']
     refresh:
       description: 'In seconds, if zero seconds only refreshes when open/close windows or trigger refresh'
       type: 'integer'

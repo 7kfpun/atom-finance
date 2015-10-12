@@ -29,6 +29,10 @@ class FinanceView extends HTMLDivElement
                 detail: 'Please refer to the documentation on https://github.com/7kfpun/atom-finance.'
       ), 2000
       @build()
+    @observeRefresh = atom.config.observe 'finance.isColorized', (newValue, previous) =>
+      @build()
+    @observeRefresh = atom.config.observe 'finance.positiveColor', (newValue, previous) =>
+      @build()
     @observeRefresh = atom.config.observe 'finance.refresh', (newValue, previous) =>
       @build()
     @observeSeparator = atom.config.observe 'finance.separator', (newValue, previous) =>
@@ -136,8 +140,15 @@ class FinanceView extends HTMLDivElement
             format = format.replace exp, quote[exp]
             console.log exp, quote[exp]
         format = format.replace /[{}]/g, ''
-        format = format.replace /(\(\+?(\d+(\.(\d+)?)?|\.\d+)\))/g, "<span style='color:green'>$1<\/span>"
-        format = format.replace /(\(-\d+?\.?\d+\))/g, "<span style='color:red'>$1<\/span>"
+
+        # Colorizing
+        if atom.config.get('finance.isColorized')
+          if atom.config.get('finance.positiveColor') == 'green'
+            format = format.replace /(\+(\d+(\.(\d+)?)?|\.\d+))/g, "<span style='color:green'>$1<\/span>"
+            format = format.replace /(-\d+?\.?\d+)/g, "<span style='color:red'>$1<\/span>"
+          else if atom.config.get('finance.positiveColor') == 'red'
+            format = format.replace /(\+(\d+(\.(\d+)?)?|\.\d+))/g, "<span style='color:red'>$1<\/span>"
+            format = format.replace /(-\d+?\.?\d+)/g, "<span style='color:green'>$1<\/span>"
         results.push(format)
 
       @price.innerHTML = results.join(separator)
