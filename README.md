@@ -43,15 +43,17 @@ To access the Finance Settings:
 
 ![Settings](https://raw.github.com/7kfpun/atom-finance/master/settings.png)
 
-Finance has 6 settings that can be edited:
+Finance has 9 settings that can be edited:
 
 1. Display | default: `right` (right, left)
 2. Format | default: `<span style="color:white">{symbol}</span>: {LastTradePriceOnly} ({Change})`
-3. Refresh | default: `30` (In seconds, if zero seconds only refreshes when open/close windows or trigger refresh)
-4. Scroll | default: `left` (left, right, fixed)
-4. Scroll Delay | default: `85`
-5. Separator | default: ` | `
-6. Watchlist | default: `GOOG,^HSI,0005.HK`
+3. IsColorized | default: `true`
+4. PositiveColor | default: `green` (green, red)
+5. Refresh | default: `30` (In seconds, if zero seconds only refreshes when open/close windows or trigger refresh)
+6. Scroll | default: `left` (left, right, fixed)
+7. Scroll Delay | default: `85`
+8. Separator | default: ` | `
+9. Watchlist | default: `GOOG,^HSI,0005.HK`
 
 #### Commands
 
