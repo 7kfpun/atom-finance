@@ -1,7 +1,7 @@
 {
   "name": "finance",
   "main": "./lib/finance",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).",
   "keywords": [
     "finance",
