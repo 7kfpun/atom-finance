@@ -4,10 +4,6 @@ Simple plugin for checking your stock in Atom.io editor (Yahoo Finance).
 
 ![ScreenShot](https://raw.github.com/7kfpun/atom-finance/master/screenshot.gif)
 
-With regex, one could show it like this:
-
-![SC2](./colorized.gif)
-
 ## Installing
 
 1. Go to `Atom -> Preferences...`
