@@ -144,11 +144,11 @@ class FinanceView extends HTMLDivElement
         # Colorizing
         if atom.config.get('finance.isColorized')
           if atom.config.get('finance.positiveColor') == 'green'
-            format = format.replace /(\+(\d+(\.(\d+)?)?|\.\d+)%?)/g, "<span style='color:green'>$1<\/span>"
-            format = format.replace /(-\d+?\.?\d+%?)/g, "<span style='color:red'>$1<\/span>"
+            format = format.replace /(\+\d*\.?\d+%?)/g, "<span style='color:green'>$1<\/span>"
+            format = format.replace /(-\d*\.?\d+%?)/g, "<span style='color:red'>$1<\/span>"
           else if atom.config.get('finance.positiveColor') == 'red'
-            format = format.replace /(\+(\d+(\.(\d+)?)?|\.\d+)%?)/g, "<span style='color:red'>$1<\/span>"
-            format = format.replace /(-\d+?\.?\d+%?)/g, "<span style='color:green'>$1<\/span>"
+            format = format.replace /(\+\d*\.?\d+%?)/g, "<span style='color:red'>$1<\/span>"
+            format = format.replace /(-\d*\.?\d+%?)/g, "<span style='color:green'>$1<\/span>"
         results.push(format)
 
       @price.innerHTML = results.join(separator)
