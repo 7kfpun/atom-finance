@@ -11,8 +11,11 @@ yahooFinance = (codes, cb) ->
       bd += d
       return
     ).on 'end', ->
-      b = JSON.parse(bd)
-      cb b
+      try
+        b = JSON.parse(bd)
+        cb b
+      catch error
+        console.log 'Yahoo finance call', error
       return
     return
 
